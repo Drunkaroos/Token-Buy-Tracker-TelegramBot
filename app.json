@@ -2,13 +2,9 @@
     "name": "bb",
     "description": "A similar buy/sell tracker for erc20 and bep20 tokens",
     "keywords": [
-        "price tracker",
-        "bep20 tracker",
-        "token tracker",
-        "eth tracker",
-        "bep2 tracker"
+        "price tracker"
     ],
-    "repository": "https://github.com/thedeveloper12/Token-Buy-Tracker-TelegramBot",
+    "repository": "https://github.com/Drunkaroos/Token-Buy-Tracker-TelegramBot",
     "env": {
         "BOT_TOKEN": {
             "description": "Telegram Bot Token",
@@ -30,7 +26,7 @@
             "description": "Token Contract Address",
             "value": ""
         },
-        "PANCAKESWAP_ADDRESS": {
+        "ETH_ADDRESS": {
             "description": "Pancake Swap address of token (Can be found in token holders list)",
             "value": ""
         },
