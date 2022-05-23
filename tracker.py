@@ -71,7 +71,7 @@ def getAmounts(transaction, type):
             token_amount = format(round(Web3.fromWei(int(transaction.sent[0]['value']), "gwei"), 2), ",")
             usd_amount = format(round(transaction.sent[0]['quote'], 2), ",")
         
-        wbnb_amount = round(Web3.fromWei(int(transaction.received[0]['value']), "ether"), 5)
+        weth_amount = round(Web3.fromWei(int(transaction.received[0]['value']), "ether"), 5)
         token_name = transaction.sent[0]['name']
         token_price = round(float(transaction.sent[0]['quoteRate']), 5)
         return token_amount, token_name, weth_amount, usd_amount, token_price
