@@ -27,7 +27,7 @@ load_dotenv(f'config.env')
 BOT_TOKEN = environ.get('BOT_TOKEN')
 CHANNEL = environ.get("CHANNEL")
 CONTRACT = environ.get("CONTRACT")
-PANCAKESWAP_ADDRESS = environ.get("PANCAKESWAP_ADDRESS")
+ETH_ADDRESS = environ.get("ETH_ADDRESS")
 CHAIN = environ.get("CHAIN")
 UNMARSHAL_API_KEY = environ.get("UNMARSHAL_API_KEY")
 API_KEY = environ.get('API_KEY')
@@ -35,7 +35,7 @@ API_HASH = environ.get('API_HASH')
 ########################
 
 BOT = TelegramClient(CONTRACT,API_KEY,API_HASH).start(bot_token=BOT_TOKEN)
-API = UnmarshalApi(PANCAKESWAP_ADDRESS, CONTRACT, CHAIN, UNMARSHAL_API_KEY)
+API = UnmarshalApi(ETH_ADDRESS, CONTRACT, CHAIN, UNMARSHAL_API_KEY)
 
 def timestampToHumanReadble(timestamp):
     date_time = datetime.fromtimestamp(timestamp)
@@ -58,10 +58,10 @@ def getAmounts(transaction, type):
     if type == "Sell":
         token_name = transaction.received[0]['name']
         token_amount = format(round(Web3.fromWei(int(transaction.received[0]['value']), "gwei"), 2), ",")
-        wbnb_amount = round(Web3.fromWei(int(transaction.sent[-1]['value']), "ether"), 5)
+        weth_amount = round(Web3.fromWei(int(transaction.sent[-1]['value']), "ether"), 5)
         usd_amount = format(round(transaction.received[0]['quote'], 2),",")
         token_price = transaction.received[0]['quoteRate']
-        return token_amount, token_name, wbnb_amount, usd_amount, token_price
+        return token_amount, token_name, weth_amount, usd_amount, token_price
     else:
         summed_sent = sum_multi_sent(transaction.sent)
         if summed_sent:
@@ -74,10 +74,10 @@ def getAmounts(transaction, type):
         wbnb_amount = round(Web3.fromWei(int(transaction.received[0]['value']), "ether"), 5)
         token_name = transaction.sent[0]['name']
         token_price = round(float(transaction.sent[0]['quoteRate']), 5)
-        return token_amount, token_name, wbnb_amount, usd_amount, token_price
+        return token_amount, token_name, weth_amount, usd_amount, token_price
 
 def getTransactionType(transaction):
-    if transaction.sent[0]['name'] == "Wrapped BNB":
+    if transaction.sent[0]['name'] == "Ethereum":
         return "🔴", "Sell"
     else:
         return "🟢", "Buy" 
@@ -98,8 +98,8 @@ def tracker():
                 last_trans_id = transaction.id
                 text = "\n**New {} 🎉🎉🚀🚀**".format(types)
                 text += f"\n**Date Time:** `{timestampToHumanReadble(transaction.date)}`"
-                text += "\n**Amount:** `{} {}` \n**Price:** `{} BNB (${})`\n**Price/Token:** `${}`".format(*getAmounts(transaction, getTransactionType(transaction)[1]))
-                keyboard = [[Button.url(text='Bscscan', url=F"https://bscscan.com/tx/{transaction.id}"),Button.url(text=f"Buy On Poocoin", url=f"https://poocoin.app/tokens/{CONTRACT}")]]
+                text += "\n**Amount:** `{} {}` \n**Price:** `{} ETH (${})`\n**Price/Token:** `${}`".format(*getAmounts(transaction, getTransactionType(transaction)[1]))
+                keyboard = [[Button.url(text='Etherscan', url=F"https://etherscan.io/tx/{transaction.id}"),Button.url(text=f"Buy On Uniswap", url=f"https://app.uniswap.org/#/swap?outputCurrency={CONTRACT}&chain=mainnet")]]
                 chat = BOT.get_entity(CHANNEL)
                 BOT.send_message(chat, message=text,buttons=keyboard)
                 time.sleep(5)
