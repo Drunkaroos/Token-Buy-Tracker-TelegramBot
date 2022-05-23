@@ -3,4 +3,4 @@ requests==2.26.0
 Telethon==1.23.0
 web3==5.26.0
 pydantic==1.9.0
-Markupsafe==1.1.1
+
