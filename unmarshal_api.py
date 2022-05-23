@@ -1,3 +1,4 @@
+import markupsafe
 from json import JSONDecodeError, loads
 from markupsafe import string
 from requests import get as getRequest
