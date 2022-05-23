@@ -18,11 +18,11 @@ class Transaction(BaseModel):
 
 
 class UnmarshalApi():
-    def __init__(self, pancakeswap_address, contract, chain, api_key) -> None:
-        self.pancakeswap_address = pancakeswap_address
+    def __init__(self, eth_address, contract, chain, api_key) -> None:
+        self.eth_address = eth_address
         self.contract = contract
         self.chain = chain
-        self.url = f"https://api.unmarshal.com/v2/{chain}/address/{self.pancakeswap_address}/transactions?page=0&pageSize=1&contract={contract}&auth_key={api_key}"
+        self.url = f"https://api.unmarshal.com/v2/{chain}/address/{self.eth_address}/transactions?page=0&pageSize=1&contract={contract}&auth_key={api_key}"
 
     def getTransactions(self):
         resp = getRequest(self.url)
