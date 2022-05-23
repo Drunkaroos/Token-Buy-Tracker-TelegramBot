@@ -1,6 +1,6 @@
-import markupsafe
+import MarkupSafe
 from json import JSONDecodeError, loads
-from markupsafe import string
+from MarkupSafe import string
 from requests import get as getRequest
 from pydantic import BaseModel, ValidationError
 
