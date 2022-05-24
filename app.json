@@ -1,6 +1,6 @@
 {
-    "name": "bb",
-    "description": "A similar buy/sell tracker for erc20 and bep20 tokens",
+    "name": "Drunkaroos",
+    "description": "A buy/sell tracker for erc20 tokens",
     "keywords": [
         "price tracker"
     ],
@@ -27,11 +27,11 @@
             "value": ""
         },
         "ETH_ADDRESS": {
-            "description": "Pancake Swap address of token (Can be found in token holders list)",
+            "description": "Uniswap address of token (Can be found in token holders list)",
             "value": ""
         },
         "CHAIN":{
-            "description":"Token Network Cahin (bsc,eth)",
+            "description":"Token Network Chain (eth)",
             "value": ""
         },
         "UNMARSHAL_API_KEY":{
