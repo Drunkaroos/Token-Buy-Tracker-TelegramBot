@@ -17,17 +17,18 @@ class Transaction(BaseModel):
 
 
 class UnmarshalApi():
-    def __init__(self, eth_address, contract, chain, api_key) -> None:
+    def __init__(self, eth_address, contract, chain, UNMARSHAL_API_KEY) -> None:
         self.eth_address = eth_address
         self.contract = contract
         self.chain = chain
-        self.url = f"https://api.unmarshal.com/v2/{chain}/address/{self.eth_address}/transactions?page=0&pageSize=1&contract={contract}&auth_key={api_key}"
+        self.api_key = UNMARSHAL_API_KEY
+        self.url = "https://api.unmarshal.com/v2/{self.chain}/address/{self.eth_address}/transactions?page=0&pageSize=1&contract={self.contract}&auth_key={self.api_key}"
 
     def getTransactions(self):
         resp = getRequest(self.url)
         try:
             resp = resp.json()
-            last_transaction = resp['transactions']
+            last_transaction = resp['transactions'] 
             if last_transaction:
                 return Transaction(**dict(last_transaction[0]))
             else:
