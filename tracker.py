@@ -34,7 +34,7 @@ API_KEY = environ.get('API_KEY')
 API_HASH = environ.get('API_HASH')
 ########################
 
-BOT = TelegramClient(CONTRACT,API_KEY,API_HASH).start(bot_token=BOT_TOKEN)
+BOT = TelegramClient('TestbuyBot2',API_KEY,API_HASH).start(bot_token=BOT_TOKEN)
 API = UnmarshalApi(ETH_ADDRESS, CONTRACT, CHAIN, UNMARSHAL_API_KEY)
 
 def timestampToHumanReadble(timestamp):
