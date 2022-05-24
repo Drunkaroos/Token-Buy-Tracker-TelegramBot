@@ -1,5 +1,4 @@
 from json import JSONDecodeError, loads
-from MarkupSafe import string
 from requests import get as getRequest
 from pydantic import BaseModel, ValidationError
 
