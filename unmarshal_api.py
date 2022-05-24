@@ -1,4 +1,4 @@
-import MarkupSafe
+from MarkupSafe import MarkupSafe
 from json import JSONDecodeError, loads
 from MarkupSafe import string
 from requests import get as getRequest
