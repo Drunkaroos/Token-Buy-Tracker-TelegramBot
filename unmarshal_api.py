@@ -14,7 +14,13 @@ class Transaction(BaseModel):
     native_token_decimals: int
     received: list
     sent: list
-
+        
+query = {
+  "page": "1",
+  "pageSize": "1",
+  "contract": CONTRACT,
+  "auth_key": UNMARSHAL_API_KEY
+}
 
 class UnmarshalApi():
     def __init__(self, eth_address, contract, chain, UNMARSHAL_API_KEY) -> None:
@@ -22,7 +28,7 @@ class UnmarshalApi():
         self.contract = contract
         self.chain = chain
         self.api_key = UNMARSHAL_API_KEY
-        self.url = f"https://api.unmarshal.com/v2/{self.chain}/address/{self.eth_address}/transactions?page=1&pageSize=1&contract={self.contract}&auth_key={self.api_key}"
+        url = "https://api.unmarshal.com/v2/{self.chain}/address/{self.eth_address}/transactions"
 
     def getTransactions(self):
-        resp = getRequest(self.url)
+        resp = getRequest(url, params=query)
