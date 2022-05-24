@@ -27,7 +27,7 @@ class UnmarshalApi():
         resp = getRequest(self.url)
         try:
             resp = resp.json()
-            last_transaction = resp['transactions']
+            last_transaction = resp['transaction']
             if last_transaction:
                 return Transaction(**dict(last_transaction[0]))
             else:
