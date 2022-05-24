@@ -24,11 +24,11 @@ query = {
 
 class UnmarshalApi():
     def __init__(self, eth_address, contract, chain, auth_key) -> None:
-        self.eth_address = eth_address
-        self.contract = contract
-        self.chain = chain
+        self.eth_address = ETH_ADDRESS
+        self.contract = CONTRACT
+        self.chain = CHAIN
         self.api_key = UNMARSHAL_API_KEY
-        url = "https://api.unmarshal.com/v2/{self.chain}/address/{self.eth_address}/transactions"
+        url = "https://api.unmarshal.com/v2/" + {self.chain} + "/address/" + {self.eth_address} "/transactions"
 
     def getTransactions(self):
         resp = getRequest(url, params=query)
