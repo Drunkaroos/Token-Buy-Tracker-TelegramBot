@@ -22,7 +22,7 @@ class UnmarshalApi():
         self.contract = contract
         self.chain = chain
         self.api_key = UNMARSHAL_API_KEY
-        self.url = f"https://api.unmarshal.com/v2/{self.chain}/address/{self.eth_address}/transactions?page=0&pageSize=1&contract={self.contract}&auth_key={self.api_key}"
+        self.url = f"https://api.unmarshal.com/v2/{self.chain}/address/{self.eth_address}/transactions?page=1&pageSize=1&contract={self.contract}&auth_key={self.api_key}"
 
     def getTransactions(self):
         resp = getRequest(self.url)
