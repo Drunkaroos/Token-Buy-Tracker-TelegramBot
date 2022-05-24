@@ -18,12 +18,12 @@ class Transaction(BaseModel):
 query = {
   "page": "1",
   "pageSize": "1",
-  "contract": CONTRACT,
-  "auth_key": UNMARSHAL_API_KEY
+  "contract": "0x19ce9b1b9db57fce6e5057230ba105e499ad6a00",
+  "auth_key": "9TwbFPmBpx8Sz9JjhWm229Ff5elVbxq21s4UIjzG"
 }
 
 class UnmarshalApi():
-    def __init__(self, eth_address, contract, chain, UNMARSHAL_API_KEY) -> None:
+    def __init__(self, eth_address, contract, chain, auth_key) -> None:
         self.eth_address = eth_address
         self.contract = contract
         self.chain = chain
