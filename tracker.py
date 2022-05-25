@@ -83,7 +83,9 @@ def getTransactionType(transaction):
         return "🔴", "Sell"
     else:
         return "🟢", "Buy" 
-
+    
+with BOT:
+    BOT.sendmessage(-1001776920705, last_trans_id)
 
 def tracker():
     last_trans_id = ""
