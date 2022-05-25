@@ -102,8 +102,9 @@ def tracker():
                 text += "\n**Amount:** `{} {}` \n**Price:** `{} ETH (${})`\n**Price/Token:** `${}`".format(*getAmounts(transaction, getTransactionType(transaction)[1]))
                 keyboard = [[Button.url(text='Etherscan', url=F"https://etherscan.io/tx/{transaction.id}"),Button.url(text=f"Buy On Uniswap", url=f"https://app.uniswap.org/#/swap?outputCurrency={CONTRACT}&chain=mainnet")]]
                 chat = BOT.get_entity(CHANNEL)
+                print(transaction)
                 with BOT:
-                    BOT.send_message(chat, message=text,buttons=keyboard)
+                    BOT.send_message(-1001776920705, message=text,buttons=keyboard)
                 time.sleep(5)
                 
             else:
