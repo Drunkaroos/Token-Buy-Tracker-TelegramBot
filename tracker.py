@@ -83,13 +83,12 @@ def getTransactionType(transaction):
         return "🔴", "Sell"
     else:
         return "🟢", "Buy" 
-    
-with BOT:
-    BOT.send_message(-1001776920705, last_trans_id)
 
 def tracker():
     last_trans_id = ""
     while True:
+        with BOT:
+            BOT.send_message(-1001776920705, last_trans_id)
         transaction = API.getTransactions()
         if transaction:
             if transaction.id != last_trans_id:
