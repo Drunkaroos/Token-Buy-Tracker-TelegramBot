@@ -17,7 +17,7 @@ class Transaction(BaseModel):
         
 query = {
   "page": "1",
-  "pageSize": "1",
+  "pageSize": "5",
   "contract": "0x19ce9b1b9db57fce6e5057230ba105e499ad6a00",
   "auth_key": "9TwbFPmBpx8Sz9JjhWm229Ff5elVbxq21s4UIjzG"
 }
