@@ -3,7 +3,7 @@ from requests import get as getRequest
 from pydantic import BaseModel, ValidationError
 
 
-url = "https://api.unmarshal.com/v2/ethereum/address/0xdcb51d6f5d297dd162e6b0b71fbaca474971333e/transactions"
+url = "https://api.unmarshal.com/v2/ethereum/address/0x6e48dbea2d3b37e4d605fda71e85c52ebc40aa40/transactions"
 
 class Transaction(BaseModel):
     """
@@ -18,13 +18,13 @@ class Transaction(BaseModel):
 query = {
   "page": "1",
   "pageSize": "5",
-  "contract": "0x19ce9b1b9db57fce6e5057230ba105e499ad6a00",
+  "contract": "0xc4c75f2a0cb1a9acc33929512dc9733ea1fd6fde",
   "auth_key": "9TwbFPmBpx8Sz9JjhWm229Ff5elVbxq21s4UIjzG"
 }
 
 class UnmarshalApi():
     def __init__(self, eth_address, contract, chain, auth_key) -> None:
-        self.eth_address = "0xdcb51d6f5d297dd162e6b0b71fbaca474971333e"
+        self.eth_address = "0x6e48dbea2d3b37e4d605fda71e85c52ebc40aa40"
         self.chain = "ethereum"
 
     def getTransactions(self):
